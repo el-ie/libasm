@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-extern int ft_strlen(const char * str);
+extern size_t ft_strlen(const char * s);
 
 int main(int argc, char **argv)
 {
