@@ -3,7 +3,8 @@ section .text
 
 ft_strlen:
 
-		mov rax, 0
+		;mov rax, 0
+		xor rax, rax
 	L1:
 		mov cl, [rdi]
 		inc rdi
