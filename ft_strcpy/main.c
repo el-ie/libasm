@@ -6,16 +6,23 @@ extern char *ft_strcpy(char *dest, const char *src);
 
 int main(int argc, char **argv)
 {
-	//if (argc != 3)
-	//{
-	//	printf("Enter only two word to test the function\n");
-	//	return 1;
-	//}
+	if (argc != 2)
+	{
+		printf("Enter only one word to test the function\n");
+		return 1;
+	}
 
-	char *src = strdup("salut");
+	char *src = strdup(argv[1]);
 	char *dest = malloc(sizeof(char) * (strlen(src) + 1));
 
 	char *res = ft_strcpy(dest, src);
+
+	printf("dest = %s\n", dest);
+	printf("res = %s\n", res);
+	printf("src = %s\n", src);
+
+	free(src);
+	free(dest);
 
 	return 0;
 }
