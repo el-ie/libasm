@@ -13,7 +13,7 @@ ft_strcmp:
 	test rsi, rsi
 	jz NULL_POINTER
 
-	mov rax, 0
+	xor rax, rax
 	xor rcx, rcx ;cl with be used to access the lower 8 bits
 	xor rdx, rdx ;dl with be used to access the lower 8 bits
 
