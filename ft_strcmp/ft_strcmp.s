@@ -15,32 +15,49 @@ ft_strcmp:
 
 	mov rax, 0
 
-	L1:
+	LOOP:
 
-	mov rcx, [rdi] ;read current character of src
+	; charge trop de characteres
+	mov cl, [rdi] ;read current character of s1?
 	inc rdi	 ;going to next src character
 
-	mov rdx, [rsi]
+	mov dl, [rsi]
 	inc rsi
 
-	test rcx, rcx ;test if rcx is '\0'
+	test cl, cl ;test if cl is '\0'
 	jz TERMINATE
 	
-	test rdx, rdx
+	test dl, dl
 	jz TERMINATE
 
-	cmp rcx, rdx
-	jne L1
+	cmp cl, dl
+	je LOOP
 
-	sub rcx, rdx
-	mov rax, rcx
-	ret
+	;LOGICAL:
+	;movzx rcx, cl
+	;movzx rdx, dl
+	;
+	;sub rcx, rdx
+	;mov rax, rcx
+	;ret
+
+	;sub cl, dl
+	;movzx : move the smaller register in the bigger one and zero-extend it
+	;movzx rax, cl
+	;ret
 
 	TERMINATE:
+
+	movzx rcx, cl
+	movzx rdx, dl
+
 	sub rcx, rdx
 	mov rax, rcx
-	;mov rax, 42
 	ret
+
+	;sub cl, dl
+	;movzx rax, cl
+	;ret
 
 	NULL_POINTER:
 	mov rax, -1
