@@ -15,17 +15,14 @@ int main(int argc, char **argv)
 	char *s1 = strdup(argv[1]);
 	char *s2 = strdup(argv[2]);
 
-	printf("[%s] - ", s1);
-	printf("[%s]\n", s2);
+	printf("s1 = [%s]\n", s1);
+	printf("s2 = [%s]\n", s2);
 
 	int ret = ft_strcmp(s1, s2);
-	printf("\n  [%d] ", ret);
+	printf("return ft_strcmp = [%d]\n", ret);
 
 	int ret2 = strcmp(s1, s2);
-	printf(" [%d]\n", ret2);
-
-	if (ret != ret2)
-		printf("\n ERROR \n");
+	printf("return true strcmp = [%d]\n", ret2);
 
 	free(s1);
 	free(s2);
