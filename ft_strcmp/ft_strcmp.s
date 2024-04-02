@@ -14,6 +14,8 @@ ft_strcmp:
 	jz NULL_POINTER
 
 	mov rax, 0
+	xor rcx, rcx ;cl with be used to access the lower 8 bits
+	xor rdx, rdx ;dl with be used to access the lower 8 bits
 
 	L1:
 
@@ -33,10 +35,6 @@ ft_strcmp:
 	je L1
 
 	TERMINATE:
-
-	; we move the values back into bigger registers to avoid precedent problems (overflow?)
-	movzx rcx, cl
-	movzx rdx, dl
 
 	sub rcx, rdx ;difference between the two characters
 	mov rax, rcx
