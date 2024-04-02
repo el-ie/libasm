@@ -15,11 +15,10 @@ ft_strcmp:
 
 	mov rax, 0
 
-	LOOP:
+	L1:
 
-	; charge trop de characteres
-	mov cl, [rdi] ;read current character of s1?
-	inc rdi	 ;going to next src character
+	mov cl, [rdi] ;read current character of s1
+	inc rdi	 ;going to next s1 character
 
 	mov dl, [rsi]
 	inc rsi
@@ -30,34 +29,18 @@ ft_strcmp:
 	test dl, dl
 	jz TERMINATE
 
-	cmp cl, dl
-	je LOOP
-
-	;LOGICAL:
-	;movzx rcx, cl
-	;movzx rdx, dl
-	;
-	;sub rcx, rdx
-	;mov rax, rcx
-	;ret
-
-	;sub cl, dl
-	;movzx : move the smaller register in the bigger one and zero-extend it
-	;movzx rax, cl
-	;ret
+	cmp cl, dl ;compare the current characters
+	je L1
 
 	TERMINATE:
 
+	; we move the values back into bigger registers to avoid precedent problems (overflow?)
 	movzx rcx, cl
 	movzx rdx, dl
 
-	sub rcx, rdx
+	sub rcx, rdx ;difference between the two characters
 	mov rax, rcx
 	ret
-
-	;sub cl, dl
-	;movzx rax, cl
-	;ret
 
 	NULL_POINTER:
 	mov rax, -1
