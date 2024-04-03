@@ -16,9 +16,7 @@ int main(int argc, char **argv)
 
 	int fd = open(argv[1], O_CREAT | O_APPEND | O_WRONLY, 0644);
 
-	char *str = strdup(argv[2]);
-	int ret = ft_write(fd, str, strlen(str));
+	int ret = ft_write(fd, argv[2], strlen(argv[2]));
 
 	printf("returned value = %d\n", ret);
-
 }
