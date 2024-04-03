@@ -17,6 +17,12 @@ int main(int argc, char **argv)
 	int fd = open(argv[1], O_CREAT | O_APPEND | O_WRONLY, 0644);
 
 	int ret = ft_write(fd, argv[2], strlen(argv[2]));
-
 	printf("returned value = %d\n", ret);
+	if (ret < 0)
+	{
+		perror("perror");
+		return -1;
+	}
+
+	return 0;
 }

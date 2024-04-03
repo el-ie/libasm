@@ -32,6 +32,9 @@ int main(int argc, char **argv)
 		return -1;
 
 	int ret = ft_read(fd, str, len);
+
+	printf("returned value = %d\n", ret);
+
 	if (ret < 0)
 	{
 		perror("perror");
@@ -40,7 +43,7 @@ int main(int argc, char **argv)
 	}
 
 	printf("str = [%s]\n", str);
-	printf("returned value = %d\n", ret);
 
 	free(str);
+	return 0;
 }
