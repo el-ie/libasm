@@ -1,11 +1,13 @@
 global ft_strdup
 
 extern malloc
-
-section .text
+extern __errno_location
 
 extern ft_strlen
 extern ft_strcpy
+
+section .text
+
 
 ;rdi contained s
 
@@ -22,7 +24,8 @@ add rdi, 1 ;for '\0'
 
 
 call malloc wrt ..plt ; carefull of malloc modifying registers ...
-;verify malloc return
+cmp rax, 0
+je MALLOC_ERROR
 
 mov byte [rax], 0 ;avoid valgrind : conditional jump on non initialized value (during ft_strcpy call)
 
@@ -33,4 +36,8 @@ mov rdi, rax
 
 call ft_strcpy
 
+ret
+
+MALLOC_ERROR:
+; ...
 ret
