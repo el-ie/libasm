@@ -1,4 +1,0 @@
-cc -g -m32 -c main.c -o main.o
-nasm -f elf32 -g -F dwarf $1.s
-cc -m32 -o exec main.o $1.o
-#ld -m elf_x86_64 -o executable *.o
