@@ -6,7 +6,10 @@ extern char *ft_strdup(const char *s);
 
 int	main(void)
 {
-	malloc(10);
-	ft_strdup("test");
+	//malloc(1);
+	char * str;
+	str = ft_strdup("ABCD");
+	printf("str [%s]\n", str);
+	free(str);
 	return 0;
 }
