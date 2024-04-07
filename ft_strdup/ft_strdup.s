@@ -20,16 +20,14 @@ mov rdi, rax ;prepare rdi for malloc call with desired size (from strlen)
 ;add rdi, 100 ;for '\0'
 add rdi, 1 ;for '\0'
 
-call malloc wrt ..plt ;modifie les valeurs des registres ...
+call malloc wrt ..plt ; carefull of malloc modifying registers ...
 
-
-mov byte [rax], 'A'
-mov byte [rax + 1], 0
+;mov byte [rax], 'A'
+;mov byte [rax + 1], 0
 
 mov rsi, r8
 mov rdi, rax
 
 call ft_strcpy
-
 
 ret
